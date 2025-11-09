@@ -91,8 +91,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={`sticky top-0 z-50 transition-all duration-1000 bg-[#244034] ${
-        scrolled ? "shadow-md backdrop-blur" : ""
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out ${
+        scrolled ? "bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 rounded-full" : "bg-[#244034] translate-y-0 scale-100"
       }`}
     >
       {/* <div className="absolute inset-0 bg-black/50"></div> */}
