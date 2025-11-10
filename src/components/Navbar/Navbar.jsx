@@ -5,8 +5,10 @@ import { TbXboxXFilled } from "react-icons/tb";
 import { Link, NavLink, useNavigate } from "react-router";
 import "./links.css";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { FaUserPlus } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 import { motion } from "motion/react";
-import logoImg from '../../assets/logo.png';
+import logoImg from "../../assets/logo.png";
 
 const navigationData = [
   {
@@ -92,7 +94,9 @@ const Navbar = () => {
   return (
     <div
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out ${
-        scrolled ? "bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 rounded-full" : "bg-[#244034] translate-y-0 scale-100"
+        scrolled
+          ? "bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 rounded-full"
+          : "bg-[#244034] translate-y-0 scale-100"
       }`}
     >
       {/* <div className="absolute inset-0 bg-black/50"></div> */}
@@ -147,15 +151,17 @@ const Navbar = () => {
                 <Link
                   to={"/login"}
                   target="_parent"
-                  className="hidden group lg:flex items-center gap-2 bg-[#D2F34C] font-semibold px-6 py-2 rounded-full border-2 border-[#D2F34C] hover:text-[#D2F34C] hover:bg-[#244034] transition-all duration-300 ease-in-out transform cursor-pointer"
+                  className="hidden group lg:flex items-center gap-2 my-btn rounded-full"
                 >
+                  <FaUser />
                   <span>Login</span>
                 </Link>
                 <Link
                   to={"/register"}
                   target="_parent"
-                  className="hidden group lg:flex items-center gap-2 bg-[#D2F34C] font-semibold px-6 py-2 rounded-full border-2 border-[#D2F34C] hover:text-[#D2F34C] hover:bg-[#244034] transition-all duration-300 ease-in-out transform cursor-pointer"
+                  className="hidden group lg:flex items-center gap-2 my-btn rounded-full"
                 >
+                  <FaUserPlus />
                   <span>Register</span>
                 </Link>
               </div>
@@ -207,18 +213,20 @@ const Navbar = () => {
           >
             <div className="space-y-3">
               <Link
-                to={"/register"}
-                target="_parent"
-                className="lg:hidden w-2/3 animation flex items-center justify-center bg-[#D2F34C] font-semibold px-6 py-2 rounded-full border border-[#D2F34C] hover:text-[#D2F34C] hover:bg-[#244034] transition-all duration-300 ease-in-out transform cursor-pointer"
-              >
-                <span>Register</span>
-              </Link>
-              <Link
                 to={"/login"}
                 target="_parent"
                 className="lg:hidden w-2/3 animation flex items-center justify-center bg-[#D2F34C] font-semibold px-6 py-2 rounded-full border border-[#D2F34C] hover:text-[#D2F34C] hover:bg-[#244034] transition-all duration-300 ease-in-out transform cursor-pointer"
               >
+                <FaUser />
                 <span>Login</span>
+              </Link>
+              <Link
+                to={"/register"}
+                target="_parent"
+                className="lg:hidden w-2/3 animation flex items-center justify-center bg-[#D2F34C] font-semibold px-6 py-2 rounded-full border border-[#D2F34C] hover:text-[#D2F34C] hover:bg-[#244034] transition-all duration-300 ease-in-out transform cursor-pointer"
+              >
+                <FaUserPlus />
+                <span>Register</span>
               </Link>
             </div>
           </motion.div>

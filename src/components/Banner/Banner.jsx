@@ -74,7 +74,7 @@ const Banner = () => {
 
         <motion.button
           whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 text-black bg-[#D2F34C] font-semibold rounded-full border-2 border-[#D2F34C] hover:text-[#D2F34C] hover:bg-[#244034] transition-all duration-300 ease-in-out transform cursor-pointer"
+          className="text-black my-btn rounded-full"
         >
           Create a Job
         </motion.button>
