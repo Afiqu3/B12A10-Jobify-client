@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 const CategoryCard = ({ category }) => {
   return (
     <motion.div
-      initial={{ y: 0, borderLeftWidth: 0, borderLeftColor: "transparent" }}
+      initial={{ y: 0, borderLeftWidth: 0 }}
       whileHover={{
         y: -5,
         borderLeftWidth: 3,
@@ -15,7 +15,7 @@ const CategoryCard = ({ category }) => {
         duration: 0.4,
         ease: "easeInOut",
       }}
-      className="flex flex-col items-center justify-center gap-3 bg-[#f9f9f9] py-8 rounded-xl shadow-md cursor-pointer border-l-0 border-transparent"
+      className="flex flex-col items-center justify-center gap-3 bg-[#f9f9f9] py-8 rounded-xl shadow-md cursor-pointer border-l-0 border-l-transparent"
     >
       <motion.div
         whileHover={{ scale: 1.1 }}

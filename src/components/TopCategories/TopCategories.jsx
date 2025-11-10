@@ -27,10 +27,10 @@ const categories = [
 const TopCategories = () => {
   const {theme} = useTheme();
   return (
-    <div className="py-16">
+    <section className="my-20">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <motion.div
-          className="flex  flex-col justify-center items-center mb-10"
+          className="flex flex-col justify-center items-center mb-15"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -54,7 +54,7 @@ const TopCategories = () => {
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

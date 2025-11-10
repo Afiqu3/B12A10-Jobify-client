@@ -18,7 +18,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative py-20 px-10 overflow-hidden text-white">
+    <section className="relative py-20 px-10 overflow-hidden text-white">
 
       <div className="max-w-6xl lg:mx-auto mx-4 lg:my-40 my-20">
         <AnimatePresence>
@@ -81,7 +81,7 @@ const Banner = () => {
       </div>
       </div>
    
-    </div>
+    </section>
   );
 };
 

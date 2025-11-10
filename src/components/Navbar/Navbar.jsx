@@ -107,142 +107,143 @@ const Navbar = () => {
   };
 
   return (
-    <div
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out ${
-        scrolled
-          ? "bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 lg:rounded-full"
-          : "bg-[#244034] translate-y-0 scale-100"
-      }`}
-    >
-      {/* <div className="absolute inset-0 bg-black/50"></div> */}
-      <nav
-        className={`flex justify-between items-center pt-7 max-w-6xl lg:mx-auto mx-4 md:py-5 ${
-          !isOpen ? "pb-7" : ""
+    <section>
+      <div
+        className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out ${
+          scrolled
+            ? "bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 lg:rounded-full"
+            : "bg-[#244034] translate-y-0 scale-100"
         }`}
       >
-        <motion.div
-          className="flex items-center gap-x-3"
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+        {/* <div className="absolute inset-0 bg-black/50"></div> */}
+        <nav
+          className={`flex justify-between items-center pt-7 max-w-6xl lg:mx-auto mx-4 md:py-5 ${
+            !isOpen ? "pb-7" : ""
+          }`}
         >
-          {isOpen ? (
-            <TbXboxXFilled
-              className="text-4xl text-white lg:hidden"
-              onClick={() => setIsOpen(!isOpen)}
-            ></TbXboxXFilled>
-          ) : (
-            <IoIosMenu
-              className="text-4xl text-white lg:hidden"
-              onClick={() => setIsOpen(!isOpen)}
-            ></IoIosMenu>
-          )}
-          <h3
-            className="text-xl font-extrabold"
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <Link to={`/`} className="flex items-center gap-x-1 text-white">
-              <img className="w-12 h-12" src={logoImg} alt="" />
-              Jobify
-            </Link>
-          </h3>
-        </motion.div>
-
-        <div className="lg:flex gap-x-4 items-center hidden">
-          <ul className="lg:flex hidden gap-x-8 font-medium">{links}</ul>
-        </div>
-
-        <div className="lg:flex gap-x-4 items-center hidden">
-          {/* <ul className="lg:flex hidden gap-x-8 font-medium">{links}</ul> */}
           <motion.div
+            className="flex items-center gap-x-3"
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-x-2">
-              <Link
-                to={"/login"}
-                target="_parent"
-                className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
-              >
-                <FaUser />
-                <span>Login</span>
+            {isOpen ? (
+              <TbXboxXFilled
+                className="text-4xl text-white lg:hidden"
+                onClick={() => setIsOpen(!isOpen)}
+              ></TbXboxXFilled>
+            ) : (
+              <IoIosMenu
+                className="text-4xl text-white lg:hidden"
+                onClick={() => setIsOpen(!isOpen)}
+              ></IoIosMenu>
+            )}
+            <h3
+              className="text-xl font-extrabold"
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <Link to={`/`} className="flex items-center gap-x-1 text-white">
+                <img className="w-12 h-12" src={logoImg} alt="" />
+                Jobify
               </Link>
-              <Link
-                to={"/register"}
-                target="_parent"
-                className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
-              >
-                <FaUserPlus />
-                <span>Register</span>
-              </Link>
-
-              <div>
-                <label className="swap swap-rotate">
-                  {/* this hidden checkbox controls the state */}
-                  <input
-                    onChange={(e) => handleTheme(e.target.checked)}
-                    type="checkbox"
-                    className="theme-controller"
-                    defaultChecked={localStorage.getItem("theme") === "dark"}
-                  />
-
-                  {/* sun icon */}
-                  <svg
-                    className="swap-off h-10 w-10 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
-                  </svg>
-
-                  {/* moon icon */}
-                  <svg
-                    className="swap-on h-10 w-10 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
-                  </svg>
-                </label>
-              </div>
-            </div>
+            </h3>
           </motion.div>
-        </div>
 
-        <div className="lg:hidden block">
-          <label className="swap swap-rotate">
-            {/* this hidden checkbox controls the state */}
-            <input
-              onChange={(e) => handleTheme(e.target.checked)}
-              type="checkbox"
-              className="theme-controller"
-              defaultChecked={localStorage.getItem("theme") === "dark"}
-            />
+          <div className="lg:flex gap-x-4 items-center hidden">
+            <ul className="lg:flex hidden gap-x-8 font-medium">{links}</ul>
+          </div>
 
-            {/* sun icon */}
-            <svg
-              className="swap-off h-10 w-10 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
+          <div className="lg:flex gap-x-4 items-center hidden">
+            {/* <ul className="lg:flex hidden gap-x-8 font-medium">{links}</ul> */}
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
-              <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
-            </svg>
+              <div className="flex items-center gap-x-2">
+                <Link
+                  to={"/login"}
+                  target="_parent"
+                  className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
+                >
+                  <FaUser />
+                  <span>Login</span>
+                </Link>
+                <Link
+                  to={"/register"}
+                  target="_parent"
+                  className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
+                >
+                  <FaUserPlus />
+                  <span>Register</span>
+                </Link>
 
-            {/* moon icon */}
-            <svg
-              className="swap-on h-10 w-10 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
-            </svg>
-          </label>
-        </div>
+                <div>
+                  <label className="swap swap-rotate">
+                    {/* this hidden checkbox controls the state */}
+                    <input
+                      onChange={(e) => handleTheme(e.target.checked)}
+                      type="checkbox"
+                      className="theme-controller"
+                      defaultChecked={localStorage.getItem("theme") === "dark"}
+                    />
 
-        {/* {user && (
+                    {/* sun icon */}
+                    <svg
+                      className="swap-off h-10 w-10 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+                    </svg>
+
+                    {/* moon icon */}
+                    <svg
+                      className="swap-on h-10 w-10 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+                    </svg>
+                  </label>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="lg:hidden block">
+            <label className="swap swap-rotate">
+              {/* this hidden checkbox controls the state */}
+              <input
+                onChange={(e) => handleTheme(e.target.checked)}
+                type="checkbox"
+                className="theme-controller"
+                defaultChecked={localStorage.getItem("theme") === "dark"}
+              />
+
+              {/* sun icon */}
+              <svg
+                className="swap-off h-10 w-10 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+              </svg>
+
+              {/* moon icon */}
+              <svg
+                className="swap-on h-10 w-10 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+              </svg>
+            </label>
+          </div>
+
+          {/* {user && (
           <div className="flex gap-6 items-center">
             <div className="lg:block hidden">
               <ul className="lg:flex hidden gap-x-8 font-medium">
@@ -276,37 +277,37 @@ const Navbar = () => {
             </motion.div>
           </div>
         )} */}
-      </nav>
-      {isOpen && (
-        <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-45">
-          <ul className={`space-y-3 animation`}>{links}</ul>
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <div className="space-y-3">
-              <Link
-                to={"/login"}
-                target="_parent"
-                className="lg:hidden animation flex items-center justify-center gap-2 my-btn rounded-full text-black"
-              >
-                <FaUser />
-                <span>Login</span>
-              </Link>
-              <Link
-                to={"/register"}
-                target="_parent"
-                className="lg:hidden animation flex items-center gap-2 justify-center my-btn rounded-full text-black"
-              >
-                <FaUserPlus />
-                <span>Register</span>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      )}
-      {/* {isOpen && user && (
+        </nav>
+        {isOpen && (
+          <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-45">
+            <ul className={`space-y-3 animation`}>{links}</ul>
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <div className="space-y-3">
+                <Link
+                  to={"/login"}
+                  target="_parent"
+                  className="lg:hidden animation flex items-center justify-center gap-2 my-btn rounded-full text-black"
+                >
+                  <FaUser />
+                  <span>Login</span>
+                </Link>
+                <Link
+                  to={"/register"}
+                  target="_parent"
+                  className="lg:hidden animation flex items-center gap-2 justify-center my-btn rounded-full text-black"
+                >
+                  <FaUserPlus />
+                  <span>Register</span>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        )}
+        {/* {isOpen && user && (
         <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-35">
           <ul className={`space-y-3 animation`}>{privateLinks}</ul>
           <button
@@ -318,7 +319,8 @@ const Navbar = () => {
           </button>
         </div>
       )} */}
-    </div>
+      </div>
+    </section>
   );
 };
 
