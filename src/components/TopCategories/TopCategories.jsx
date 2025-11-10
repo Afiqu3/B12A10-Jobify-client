@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { motion } from "motion/react";
 import CategoryCard from "./CategoryCard";
+import useTheme from "../../hooks/useTheme";
 
 const categories = [
   { id: 1, name: "Development", icon: <FaLaptopCode /> },
@@ -24,8 +25,9 @@ const categories = [
 ];
 
 const TopCategories = () => {
+  const {theme} = useTheme();
   return (
-    <div className="bg-white py-16">
+    <div className="py-16">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <motion.div
           className="flex  flex-col justify-center items-center mb-10"
@@ -33,7 +35,7 @@ const TopCategories = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#244034] mb-2">
+          <h2 className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? '': 'text-[#244034]'} mb-2`}>
             Top Categories
           </h2>
 

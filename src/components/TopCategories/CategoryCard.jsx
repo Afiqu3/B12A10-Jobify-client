@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
 
-
 const CategoryCard = ({ category }) => {
   return (
     <motion.div

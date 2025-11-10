@@ -65,7 +65,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-gray-300 text-lg max-w-2xl mb-8"
+          className="text-gray-300 text-sm sm:text-lg max-w-2xl mb-8"
         >
           Jobify helps you post, discover, and manage jobs with confidence.
           Authenticated users control their job listings — add, update, or remove —
