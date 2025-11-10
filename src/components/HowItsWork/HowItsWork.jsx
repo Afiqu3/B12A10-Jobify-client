@@ -4,7 +4,8 @@ import { FaUserPlus } from "react-icons/fa6";
 import { RiProfileFill } from "react-icons/ri";
 import { FaPen } from "react-icons/fa";
 import StepCard from "./StepCard";
-import arrowImg from '../../assets/arrow.png'
+import arrowImg from "../../assets/arrow.png";
+import useScreenSize from "../../hooks/useScreenSize";
 
 const steps = [
   {
@@ -30,14 +31,18 @@ const steps = [
 ];
 
 const HowItsWork = () => {
+  const { isMedium, isLarge } = useScreenSize();
+
+  const initialX = isLarge ? -1100 : isMedium ? -200 : 0;
+
   return (
     <motion.section
-      className="bg-[#244034] mb-10"
-      initial={{ opacity: 0, x: -1175 }}
+      className="bg-[#244034]"
+      initial={{ opacity: 0, x: initialX }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="py-20 relative">
+      <div className="py-30 relative">
         <div className="max-w-6xl mx-auto text-white">
           <motion.div
             className="flex flex-col justify-center items-center mb-15"
@@ -51,15 +56,23 @@ const HowItsWork = () => {
             <div className="h-0.5 bg-[#D2F34C] w-30"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-4 m-4">
             {steps.map((step) => (
               <StepCard key={step.id} step={step}></StepCard>
             ))}
           </div>
         </div>
 
-        <img className="absolute top-40 left-95" src={arrowImg} alt="" />
-        <img className="absolute top-40 left-195" src={arrowImg} alt="" />
+        <img
+          className="hidden lg:block absolute top-50 left-[380px]"
+          src={arrowImg}
+          alt=""
+        />
+        <img
+          className="hidden lg:block absolute top-50 left-[780px]"
+          src={arrowImg}
+          alt=""
+        />
       </div>
     </motion.section>
   );

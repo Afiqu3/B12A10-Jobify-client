@@ -14,9 +14,9 @@ import CategoryCard from "./CategoryCard";
 import useTheme from "../../hooks/useTheme";
 
 const categories = [
-  { id: 1, name: "Development", icon: <FaLaptopCode /> },
-  { id: 2, name: "Design", icon: <FaPaintBrush /> },
-  { id: 3, name: "Marketing", icon: <FaChartLine /> },
+  { id: 1, name: "Web Development", icon: <FaLaptopCode /> },
+  { id: 2, name: "Graphics Designing", icon: <FaPaintBrush /> },
+  { id: 3, name: "Digital Marketing", icon: <FaChartLine /> },
   { id: 4, name: "Management", icon: <FaUserTie /> },
   { id: 5, name: "Technical Support", icon: <FaWrench /> },
   { id: 6, name: "Healthcare", icon: <FaHeartbeat /> },
@@ -27,7 +27,7 @@ const categories = [
 const TopCategories = () => {
   const {theme} = useTheme();
   return (
-    <section className="my-20">
+    <section className="my-30">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <motion.div
           className="flex flex-col justify-center items-center mb-15"

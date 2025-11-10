@@ -1,0 +1,31 @@
+import React from "react";
+import { Link } from "react-router";
+import { FaArrowRight } from "react-icons/fa6";
+
+
+const JobCard = ({ job }) => {
+  return (
+    <div className="bg-[#f9f9f9] pb-6 shadow-sm hover:drop-shadow-md hover:-translate-y-0.5">
+      <figure className="p-2">
+        <img
+          src={job.coverImage}
+          className="rounded-lg"
+          alt="Shoes"
+        />
+      </figure>
+      <div className="text-left mt-4 px-4">
+        <p className="text-gray-400 text-sm mb-2">{job.category}</p>
+        <h3 className="text-[#244034] text-xl font-semibold mb-4">{job.title}</h3>
+        <div className="h-px bg-gray-200 mb-4"></div>
+        <div className="space-y-1 text-[#244034] mb-6">
+            <p>{job.postedBy}</p>
+            <p>Salary: <span className="font-semibold">{job.salary}</span></p>
+        </div>
+
+            <Link className="my-btn w-3/5 flex gap-4 items-center group transition px-4 text-black justify-center"><span>View Details</span> <FaArrowRight className="group-hover:-rotate-45 transition-all duration-300"></FaArrowRight></Link>
+      </div>
+    </div>
+  );
+};
+
+export default JobCard;
