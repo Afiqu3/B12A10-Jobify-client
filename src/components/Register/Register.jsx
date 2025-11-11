@@ -11,6 +11,7 @@ import { Bounce, toast } from "react-toastify";
 import { motion } from "motion/react";
 import useAuth from "../../hooks/useAuth";
 import { FaUserPlus } from "react-icons/fa6";
+import useTheme from "../../hooks/useTheme";
 
 const Register = () => {
   const {
@@ -23,6 +24,7 @@ const Register = () => {
     setError,
   } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const { theme } = useTheme();
   const [upper, setUpper] = useState(false);
   const [lower, setLower] = useState(false);
   const [length, setLength] = useState(false);
@@ -130,7 +132,7 @@ const Register = () => {
   }, [user, navigate]);
   return (
     <motion.div
-      className="card bg-[#244034] text-white w-full max-w-sm shrink-0 shadow-2xl mx-auto my-40"
+      className="card bg-[#244034] text-white w-full max-w-lg shrink-0 shadow-2xl mx-auto my-40"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -151,7 +153,7 @@ const Register = () => {
             <input
               type="text"
               name="name"
-              className="input focus:border-transparent text-black"
+              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
               placeholder="Name"
               required
             />
@@ -160,7 +162,7 @@ const Register = () => {
             <input
               type="url"
               name="photo"
-              className="input focus:border-transparent text-black"
+              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
               placeholder="Photo URL"
               required
             />
@@ -169,7 +171,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              className="input focus:border-transparent text-black"
+              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
               placeholder="Email"
               required
             />
@@ -180,13 +182,13 @@ const Register = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 onChange={handlePassOnChange}
-                className="input focus:border-transparent text-black"
+                className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
                 placeholder="Password"
                 required
               />
               <span
                 onClick={handleTogglePassword}
-                className="absolute top-3 right-6 z-1 cursor-pointer text-black"
+                className={`absolute top-3 right-6 z-1 cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-black'}`}
               >
                 {showPassword ? (
                   <FaEyeSlash size={18}></FaEyeSlash>

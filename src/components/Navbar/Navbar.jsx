@@ -10,6 +10,8 @@ import { FaUser } from "react-icons/fa";
 import { motion } from "motion/react";
 import logoImg from "../../assets/logo.png";
 import useTheme from "../../hooks/useTheme";
+import useAuth from "../../hooks/useAuth";
+import { Bounce, toast } from "react-toastify";
 
 const navigationData = [
   {
@@ -36,14 +38,19 @@ const navigationData = [
 
 const privateNavigationData = [
   {
-    name: "Home",
-    path: "/",
-    id: 1,
+    name: "Add a Job",
+    path: "/addJob",
+    id: 3,
   },
   {
-    name: "All Jobs",
-    path: "/allJobs",
-    id: 2,
+    name: "My Added Jobs",
+    path: "/myAddedJobs",
+    id: 4,
+  },
+  {
+    name: "My Accepted Jobs",
+    path: "/my-accepted-tasks",
+    id: 5,
   },
 ];
 
@@ -51,7 +58,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
-  //   const { user, signOutUser } = useContext(AuthContext);
+    const { user, signOutUser } = useAuth();
   const navigate = useNavigate();
 
   const links = navigationData.map((nav) => (
@@ -86,24 +93,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // logout
   const handleLogOut = () => {
-    // signOutUser()
-    //   .then(() => {
-    //     toast.success("Logout Successfully!", {
-    //       position: "top-center",
-    //       autoClose: 5000,
-    //       hideProgressBar: false,
-    //       closeOnClick: false,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "dark",
-    //       transition: Bounce,
-    //     });
-    //   })
-    //   .catch(() => {
-    //     // console.log(error);
-    //   });
+    signOutUser()
+      .then(() => {
+        toast.success("Logout Successfully!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+      })
+      .catch(() => {
+        // console.log(error);
+      });
   };
 
   return (
@@ -152,7 +160,7 @@ const Navbar = () => {
           </motion.div>
 
           <div className="lg:flex gap-x-4 items-center hidden">
-            <ul className="lg:flex hidden gap-x-8 font-medium">{links}</ul>
+            <ul className="lg:flex hidden gap-x-8 font-medium">{links} {user && privateLinks}</ul>
           </div>
 
           <div className="lg:flex gap-x-4 items-center hidden">
@@ -278,7 +286,10 @@ const Navbar = () => {
           </div>
         )} */}
         </nav>
-        {isOpen && (
+
+
+        {/*  mobile and tab */}
+        {isOpen && !user && (
           <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-45">
             <ul className={`space-y-3 animation`}>{links}</ul>
             <motion.div
@@ -307,9 +318,9 @@ const Navbar = () => {
             </motion.div>
           </div>
         )}
-        {/* {isOpen && user && (
-        <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-35">
-          <ul className={`space-y-3 animation`}>{privateLinks}</ul>
+        {isOpen && user && (
+        <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-55">
+          <ul className={`space-y-3 animation`}>{links} {privateLinks}</ul>
           <button
             onClick={handleLogOut}
             className="animation lg:hidden group flex items-center gap-2 bg-linear-to-r from-[#52057B] to-[#892CDC] text-white font-semibold px-6 py-2 rounded-full shadow-md transition-all duration-300 ease-in-out transform focus:ring-2 focus:ring-[#892CDC] focus:outline-none cursor-pointer"
@@ -318,7 +329,7 @@ const Navbar = () => {
             <span>Logout</span>
           </button>
         </div>
-      )} */}
+      )}
       </div>
     </section>
   );
