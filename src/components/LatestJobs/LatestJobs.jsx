@@ -17,6 +17,7 @@ const latestJobs = [
     userEmail: "arif.hossain@techco.bd",
     salary: "BDT 80,000 - 120,000",
     vacancy: "2",
+    postedDate: "2025-11-11T09:18:00+06:00",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const latestJobs = [
     userEmail: "fatima@marketpro.bd",
     salary: "BDT 50,000 - 75,000",
     vacancy: "3",
+    postedDate: "2025-11-10T14:30:00+06:00",
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const latestJobs = [
     userEmail: "rahim.khan@designhub.bd",
     salary: "BDT 60,000 - 90,000",
     vacancy: "1",
+    postedDate: "2025-11-10T14:30:00+06:00",
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const latestJobs = [
     userEmail: "sanjida@cloudcare.bd",
     salary: "BDT 40,000 - 60,000",
     vacancy: "4",
+    postedDate: "2025-11-10T14:30:00+06:00",
   },
   {
     id: 5,
@@ -69,6 +73,7 @@ const latestJobs = [
     userEmail: "karim@wpstudio.bd",
     salary: "BDT 70,000 - 100,000",
     vacancy: "2",
+    postedDate: "2025-11-06T13:15:00+06:00",
   },
   {
     id: 6,
@@ -82,6 +87,7 @@ const latestJobs = [
     userEmail: "nabila@animake.bd",
     salary: "BDT 55,000 - 80,000",
     vacancy: "1",
+    postedDate: "2025-11-06T13:15:00+06:00",
   },
 ];
 

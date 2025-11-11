@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
-
+import { format, parseISO } from 'date-fns';
 
 const JobCard = ({ job }) => {
+  const dateInBD = parseISO(job.postedDate);
+
+  const formattedDate = format(dateInBD, 'dd-MM-yyyy');
   return (
     <div className="bg-[#f9f9f9] pb-6 shadow-sm hover:drop-shadow-md hover:-translate-y-0.5">
       <figure className="p-2">
@@ -18,7 +21,10 @@ const JobCard = ({ job }) => {
         <h3 className="text-[#244034] text-xl font-semibold mb-4">{job.title}</h3>
         <div className="h-px bg-gray-200 mb-4"></div>
         <div className="space-y-1 text-[#244034] mb-6">
-            <p>{job.postedBy}</p>
+            <div className="flex justify-between items-center">
+              <p>{job.postedBy}</p>
+              <p>{formattedDate}</p>
+            </div>
             <p>Salary: <span className="font-semibold">{job.salary}</span></p>
         </div>
 
