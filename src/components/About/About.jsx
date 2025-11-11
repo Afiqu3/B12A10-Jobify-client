@@ -28,13 +28,15 @@ const About = () => {
             <div className="h-0.5 bg-[#D2F34C] w-30"></div>
           </motion.div>
 
-          <div className="flex gap-4">
+          <div className="flex lg:flex-row flex-col gap-4 lg:px-0 px-4">
+
             <div className="relative flex-1">
               <img src={banner2} alt="" />
               {/* <img className="absolute -top-15 -left-15 w-70 h-50" src={banner1} alt="" /> */}
               {/* <img className="absolute -bottom-15 -left-15 w-50 h-50" src={banner3} alt="" /> */}
             </div>
-            <div className="flex-1 flex flex-col justify-center items-center gap-4">
+
+            <div className="flex-1 flex flex-col justify-center items-center gap-4 lg:text-left text-center">
               <h2 className="text-2xl font-bold">Jobify - Where Tasks Meet Talent, and Action Meets Trust</h2>
               <p className="text-gray-400">
                 Jobify is not merely a task marketplace—it's a living,
@@ -49,6 +51,7 @@ const About = () => {
                 disorganized digital lives.
               </p>
             </div>
+
           </div>
         </div>
       </div>
