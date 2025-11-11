@@ -53,7 +53,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative bg-[#244034] text-gray-300 mt-12 pt-15 border-t border-white/10 sm:[clip-path:polygon(0_0%,100%_25%,100%_100%,0_100%)] [clip-path:polygon(0_0%,100%_15%,100%_100%,0_100%)]"
+      className="relative bg-[#244034] text-gray-300 pt-15 border-t border-white/10 sm:[clip-path:polygon(0_0%,100%_25%,100%_100%,0_100%)] [clip-path:polygon(0_0%,100%_15%,100%_100%,0_100%)]"
     >
       <div className="relative max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">

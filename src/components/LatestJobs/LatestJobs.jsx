@@ -2,6 +2,7 @@ import React from "react";
 import useTheme from "../../hooks/useTheme";
 import { motion } from "motion/react";
 import JobCard from "./JobCard";
+import { Link } from "react-router";
 
 const latestJobs = [
   {
@@ -89,7 +90,7 @@ const LatestJobs = () => {
 
   return (
     <section className="my-30">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           className="flex flex-col justify-center items-center mb-15"
           initial={{ opacity: 0, y: 40 }}
@@ -131,6 +132,10 @@ const LatestJobs = () => {
               <JobCard job={job}></JobCard>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+            <Link to={'/allJobs'} className='my-btn text-black'>See All Jobs</Link>
         </div>
       </div>
     </section>

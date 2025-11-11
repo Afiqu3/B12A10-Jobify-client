@@ -13,7 +13,7 @@ const JobCard = ({ job }) => {
           alt="Shoes"
         />
       </figure>
-      <div className="text-left mt-4 px-4">
+      <div className="mt-4 px-4">
         <p className="text-gray-400 text-sm mb-2">{job.category}</p>
         <h3 className="text-[#244034] text-xl font-semibold mb-4">{job.title}</h3>
         <div className="h-px bg-gray-200 mb-4"></div>
