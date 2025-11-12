@@ -12,6 +12,7 @@ import { motion } from "motion/react";
 import useAuth from "../../hooks/useAuth";
 import { FaUserPlus } from "react-icons/fa6";
 import useTheme from "../../hooks/useTheme";
+import useAxios from "../../hooks/useAxios";
 
 const Register = () => {
   const {
@@ -25,6 +26,7 @@ const Register = () => {
   } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const { theme } = useTheme();
+  const axiosInstance = useAxios();
   const [upper, setUpper] = useState(false);
   const [lower, setLower] = useState(false);
   const [length, setLength] = useState(false);
@@ -72,8 +74,46 @@ const Register = () => {
     createUser(email, password)
       .then(() => {
         // const user = result.user;
+        const newUser = { name, email, photo };
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
+            axiosInstance.post("/users", newUser).then((data) => {
+              if (data.data.insertedId) {
+                toast.success("Register Successfully! Login to continue...", {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: false,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "dark",
+                  transition: Bounce,
+                });
+                signOutUser();
+                navigate("/");
+              }
+            });
+          })
+          .catch(() => {
+            // console.log(error);
+          });
+      })
+      .catch(() => {
+        // console.log(error.message);
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL,
+        };
+        axiosInstance.post("/users", newUser).then((data) => {
+          if (data.data.insertedId) {
             toast.success("Register Successfully! Login to continue...", {
               position: "top-center",
               autoClose: 3000,
@@ -87,33 +127,8 @@ const Register = () => {
             });
             signOutUser();
             navigate("/");
-          })
-          .catch(() => {
-            // console.log(error);
-          });
-      })
-      .catch(() => {
-        // console.log(error.message);
-      });
-  };
-
-  const handleGoogleSignUp = () => {
-    signInWithGoogle()
-      .then(() => {
-        toast.success("Register Successfully! Login to continue...", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          transition: Bounce,
+          }
         });
-        signOutUser();
-        // console.log(result.user);
-        navigate("/");
       })
       .catch(() => {
         // console.log(error.message);
@@ -143,7 +158,10 @@ const Register = () => {
           <h1 className="text-4xl font-bold text-[#D2F34C] mb-2">
             Join Jobify Today
           </h1>
-          <p className="text-gray-400 text-sm">Create your free account and start posting or claiming tasks in seconds - no fees, no hassle.</p>
+          <p className="text-gray-400 text-sm">
+            Create your free account and start posting or claiming tasks in
+            seconds - no fees, no hassle.
+          </p>
         </div>
 
         <form onSubmit={handleRegister}>
@@ -153,7 +171,9 @@ const Register = () => {
             <input
               type="text"
               name="name"
-              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
+              className={`input focus:border-transparent ${
+                theme === "dark" ? "text-white" : "text-black"
+              } w-full`}
               placeholder="Name"
               required
             />
@@ -162,7 +182,9 @@ const Register = () => {
             <input
               type="url"
               name="photo"
-              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
+              className={`input focus:border-transparent ${
+                theme === "dark" ? "text-white" : "text-black"
+              } w-full`}
               placeholder="Photo URL"
               required
             />
@@ -171,7 +193,9 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
+              className={`input focus:border-transparent ${
+                theme === "dark" ? "text-white" : "text-black"
+              } w-full`}
               placeholder="Email"
               required
             />
@@ -182,13 +206,17 @@ const Register = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 onChange={handlePassOnChange}
-                className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
+                className={`input focus:border-transparent ${
+                  theme === "dark" ? "text-white" : "text-black"
+                } w-full`}
                 placeholder="Password"
                 required
               />
               <span
                 onClick={handleTogglePassword}
-                className={`absolute top-3 right-6 z-1 cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+                className={`absolute top-3 right-6 z-1 cursor-pointer ${
+                  theme === "dark" ? "text-white" : "text-black"
+                }`}
               >
                 {showPassword ? (
                   <FaEyeSlash size={18}></FaEyeSlash>
@@ -239,7 +267,8 @@ const Register = () => {
               </div>
             </div>
             <button className="my-btn text-black flex justify-center items-center gap-2 text-base">
-                <FaUserPlus /><span>Register</span>
+              <FaUserPlus />
+              <span>Register</span>
             </button>
           </fieldset>
         </form>
