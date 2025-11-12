@@ -247,7 +247,7 @@ const Navbar = () => {
                     className="dropdown-content menu bg-[#244034] text-white rounded-box z-1 w-52 p-2 shadow-sm"
                   >
                     <li className="pointer-events-none cursor-not-allowed text-gray-400">
-                      <p>{user.displayName}</p>
+                      <p className="font-extrabold">{user.displayName}</p>
                     </li>
                     <li className="flex justify-center hover:bg-[#D2F34C] hover:text-black">
                       <div className="flex items-center">
@@ -342,7 +342,7 @@ const Navbar = () => {
                   className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
                 >
                   <li>
-                    <p>{user.displayName}</p>
+                    <p className="font-extrabold">{user.displayName}</p>
                   </li>
                   <li className="flex justify-center">
                     <div className="flex items-center">

@@ -160,7 +160,7 @@ const Register = () => {
           </h1>
           <p className="text-gray-400 text-sm">
             Create your free account and start posting or claiming tasks in
-            seconds - no fees, no hassle.
+            seconds - no fees, no hassle
           </p>
         </div>
 
@@ -266,7 +266,7 @@ const Register = () => {
                 </span>
               </div>
             </div>
-            <button className="my-btn text-black flex justify-center items-center gap-2 text-base">
+            <button className="mt-4 my-btn text-black flex justify-center items-center gap-2 text-base">
               <FaUserPlus />
               <span>Register</span>
             </button>

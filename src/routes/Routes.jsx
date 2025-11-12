@@ -3,6 +3,8 @@ import RootLayout from "../layouts/RootLayout/RootLayout";
 import Home from "../pages/Home/Home";
 import Register from "../components/Register/Register";
 import Login from "../components/Login/LOgin";
+import PrivateRoutes from "./PrivateRoutes";
+import AddJob from "../components/AddJob/AddJob";
 
 export const router = createBrowserRouter([
   {
@@ -14,13 +16,21 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: '/register',
+        path: "/register",
         Component: Register,
       },
       {
-        path:'login',
-        Component: Login
-      }
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/addJob",
+        element: (
+          <PrivateRoutes>
+            <AddJob></AddJob>
+          </PrivateRoutes>
+        ),
+      },
     ],
   },
 ]);
