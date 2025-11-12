@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useTheme from "../../hooks/useTheme";
 import { motion } from "motion/react";
 import JobCard from "./JobCard";
@@ -206,7 +206,7 @@ const LatestJobs = () => {
         </div>
 
         <div className="mt-10 text-center">
-          <Link to={"/allJobs"} className="my-btn text-black">
+          <Link to={"/allJobs"} target="_parent" className="my-btn text-black">
             See All Jobs
           </Link>
         </div>
