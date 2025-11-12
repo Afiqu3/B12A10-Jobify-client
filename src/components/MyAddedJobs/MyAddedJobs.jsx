@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import useTheme from "../../hooks/useTheme";
-import useAxios from "../../hooks/useAxios";
 import JobCard from "../LatestJobs/JobCard";
 import { RingLoader } from "react-spinners";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const AllJobs = () => {
+const MyAddedJobs = () => {
   const { theme } = useTheme();
-  const axiosInstance = useAxios();
+  const {user} = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [jobs, setJobs] = useState([]);
-  const [sortType, setSortType] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axiosInstance.get(`/jobs?sort=${sortType}`).then((data) => {
+    axiosSecure.get(`/myJobs?email=${user.email}`).then((data) => {
       setJobs(data.data);
     });
     setLoading(false);
-  }, [axiosInstance, sortType]);
+  }, [axiosSecure, user.email]);
 
   return (
     <section className="my-40">
-      <title>All Jobs</title>
+      <title>My Added Jobs</title>
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           className="flex flex-col justify-center items-center mb-15"
@@ -35,27 +36,11 @@ const AllJobs = () => {
               theme === "dark" ? "" : "text-[#244034]"
             } mb-2`}
           >
-            All Jobs
+            My Added Jobs
           </h2>
 
           <div className="h-0.5 bg-[#D2F34C] w-30"></div>
         </motion.div>
-
-        <div className="mb-15">
-          <form className="flex justify-center items-center gap-2">
-            <select
-              name="sortType"
-              id=""
-              onChange={(e) => setSortType(e.target.value)}
-              className={`select focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              }`}
-            >
-              <option value="asc">Old to New</option>
-              <option value="desc">New to Old</option>
-            </select>
-          </form>
-        </div>
 
         {/* loading true */}
         {loading && (
@@ -94,4 +79,4 @@ const AllJobs = () => {
   );
 };
 
-export default AllJobs;
+export default MyAddedJobs;
