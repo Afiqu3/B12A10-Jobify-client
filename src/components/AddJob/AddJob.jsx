@@ -141,7 +141,9 @@ const AddJob = () => {
             <label className="label">Summary</label>
             <textarea
               name="summary"
-              className="textarea w-full focus:border-transparent"
+              className={`textarea w-full focus:border-transparent ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}
               placeholder="Give a summary"
             ></textarea>
             {/* cover image */}

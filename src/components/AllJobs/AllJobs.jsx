@@ -41,7 +41,10 @@ const AllJobs = () => {
           <div className="h-0.5 bg-[#D2F34C] w-30"></div>
         </motion.div>
 
-        <div className="mb-15">
+        <motion.div className="mb-15"
+        initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}>
           <form className="flex justify-center items-center gap-2">
             <select
               name="sortType"
@@ -55,7 +58,7 @@ const AllJobs = () => {
               <option value="desc">New to Old</option>
             </select>
           </form>
-        </div>
+        </motion.div>
 
         {/* loading true */}
         {loading && (
