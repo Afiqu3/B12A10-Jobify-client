@@ -1,16 +1,87 @@
-# React + Vite
+# 💼 Jobify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack job management platform where users can explore, post, update, and accept jobs — built with **React**, **Node.js**, **Express**, **MongoDB**, and **Firebase Authentication**.  
+This project demonstrates end-to-end CRUD operations, protected routes, and real-world integration of modern web technologies.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧩 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔐 Authentication
+- User login and registration using **Firebase Authentication**
+- Supports **Google Sign-In**
+- Displays logged-in user’s **photo and name**
+- Protected routes for sensitive pages (`/addJob`, `/myAddedJobs`, `/myAcceptedJobs`)
+- Users stay logged in even after refreshing the page
 
-## Expanding the ESLint configuration
+### 💼 Job Management
+- **Add a Job:** Authenticated users can post jobs with details like title, category, summary, salary, and vacancy.
+- **View All Jobs:** Browse all posted jobs in a grid layout.
+- **Job Details:** View complete job info with option to accept the job.
+- **Update/Delete:** Job owners can edit or delete their own jobs.
+- **Accept Jobs:** Users can accept others’ jobs (not their own) — accepted jobs appear in “My Accepted Jobs”.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🎨 UI & UX
+- Fully responsive across **mobile, tablet, and desktop**
+- **Dark/Light theme toggle**
+- Elegant **animated banner** and dynamic sections using **Framer Motion**
+- Interactive **Top Categories**, **About Platform**, and **FAQ** sections
+- **Custom 404 page** for invalid routes
+- **Toast notifications** for all success/error actions (no `alert()` used)
+- **Loading spinners** during data fetch operations
+
+---
+
+## ⚙️ Tech Stack
+
+| Category | Technology |
+|-----------|-------------|
+| **Frontend** | React, React Router, Tailwind CSS, DaisyUI |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB Atlas |
+| **Authentication** | Firebase Authentication |
+| **HTTP Client** | Axios |
+| **UI Enhancements** | Framer Motion, React Icons, React Spinners |
+| **Notifications** | React Toastify, SweetAlert2 |
+| **Date Handling** | date-fns |
+| **Typing Effect** | react-simple-typewriter |
+
+---
+
+## 🧠 Core Functionalities
+
+### 1. **Home Page**
+- Animated banner with CTA buttons
+- Latest 6 jobs fetched dynamically from MongoDB
+- Static sections: Top Categories, About Platform, FAQ, How It Works
+
+### 2. **All Jobs**
+- Grid layout of all jobs
+- Sorting by posted date/time
+- View Details button for each job
+
+### 3. **Add Job**
+- Form for posting new jobs (private route)
+- Auto-filled “Posted By”, “User Email”, and “Posted Date”
+- Shows toast notification on successful submission
+
+### 4. **My Added Jobs**
+- Lists jobs created by the logged-in user
+- Update and Delete options available
+- Instant UI update after deletion
+
+### 5. **Update Job**
+- Pre-filled editable form
+- Confirmation toast upon update success
+
+### 6. **My Accepted Jobs**
+- Shows jobs accepted by the logged-in user
+- Each card includes ✅ (Done) and ❌ (Cancel) buttons
+- Instant UI and database update
+
+---
+## 🚀 Live Links
+
+https://jobify-a10.netlify.app/
+

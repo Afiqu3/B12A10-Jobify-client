@@ -49,7 +49,7 @@ const privateNavigationData = [
   },
   {
     name: "My Accepted Jobs",
-    path: "/my-accepted-tasks",
+    path: "/myAcceptedJobs",
     id: 5,
   },
 ];
@@ -59,7 +59,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
   const { user, signOutUser } = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const links = navigationData.map((nav) => (
     <Links key={nav.id} nav={nav}></Links>
@@ -240,7 +240,7 @@ const Navbar = () => {
                     role="button"
                     className="cursor-pointer m-1"
                   >
-                    <img src={user.photoURL} alt="" />
+                    <img src={user.photoURL} className="rounded-full w-12" alt="" />
                   </div>
                   <ul
                     tabIndex="-1"

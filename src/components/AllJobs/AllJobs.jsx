@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import useTheme from "../../hooks/useTheme";
 import useAxios from "../../hooks/useAxios";
 import JobCard from "../LatestJobs/JobCard";
-import { RingLoader } from "react-spinners";
+import { PacmanLoader } from "react-spinners";
 
 const AllJobs = () => {
   const { theme } = useTheme();
@@ -63,7 +63,7 @@ const AllJobs = () => {
         {/* loading true */}
         {loading && (
           <div className="flex justify-center items-center">
-            <RingLoader size={50}></RingLoader>
+            <PacmanLoader size={50}></PacmanLoader>
           </div>
         )}
 

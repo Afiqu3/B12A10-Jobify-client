@@ -34,9 +34,9 @@ const AddJob = () => {
       vacancy: vacancy,
       postedDate: new Date(),
     };
-    
+
     axiosSecure.post("/jobs", newJob).then((data) => {
-    //   console.log(data.data);
+      //   console.log(data.data);
       if (data.data.insertedId) {
         Swal.fire({
           position: "center",
@@ -125,13 +125,15 @@ const AddJob = () => {
             <label className="label">Category</label>
             <select
               name="category"
-              defaultValue="Select a category"
+              defaultValue=""
               className={`select focus:border-transparent ${
                 theme === "dark" ? "text-white" : "text-black"
               } w-full`}
               required
             >
-              <option disabled={true}>Select a Category</option>
+              <option value="" disabled>
+                Select a Category
+              </option>
               <option value={"Web Development"}>Web Development</option>
               <option value={"Digital Marketing"}>Digital Marketing</option>
               <option value={"Graphics Designing"}>Graphics Designing</option>

@@ -33,8 +33,8 @@ const Footer = () => {
   const explore = [
     ["All Jobs", "/allJobs"],
     ["Add Job", "/addJob"],
-    ["My Jobs", "/myJobs"],
-    ["Applied Jobs", "/appliedJobs"],
+    ["My Added Jobs", "/myAddedJobs"],
+    ["Applied Jobs", "/myAcceptedJobs"],
   ];
 
   const company = [
@@ -82,16 +82,16 @@ const Footer = () => {
 
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map(({ Icon, label, href }) => (
-                <a
+                <Link
                   href={href}
                   key={label}
-                  target="_blank"
+                  target="_parent"
                   rel="noopener noreferrer"
                   aria-label={label}
                   className="group p-2 rounded-lg ring-1 ring-white/10 hover:ring-[#D2F34C]/60 hover:-translate-y-0.5 transition bg-white/5 cursor-pointer"
                 >
                   <Icon className="w-4 h-4 text-gray-300 group-hover:text-[#D2F34C]" />
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -113,6 +113,7 @@ const Footer = () => {
                 <li key={label}>
                   <Link
                     to={link}
+                    target="_parent"
                     className="hover:text-[#D2F34C] transition cursor-pointer"
                   >
                     {label}

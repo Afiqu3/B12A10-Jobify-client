@@ -14,6 +14,7 @@ const MyJobCard = ({ job, handleDelete, handleModal }) => {
       <figure className="p-2">
         <img src={job.coverImage} className="rounded-lg" alt="Shoes" />
       </figure>
+      
       <div className="mt-4 px-4">
         <p className="text-gray-400 text-sm mb-2">{job.category}</p>
         <h3 className="text-[#244034] text-xl font-semibold mb-4">
@@ -35,7 +36,7 @@ const MyJobCard = ({ job, handleDelete, handleModal }) => {
             <button className="btn bg-white border-0 shadow-none outline outline-red-500 text-red-500 hover:bg-red-500 hover:text-black hover:outline-0" onClick={() => handleDelete(job._id)}><MdDeleteForever size={24} />Delete</button>
         </div>
 
-        <Link className="my-btn w-3/5 flex gap-4 items-center group transition px-4 text-black justify-center">
+        <Link to={`/allJobs/${job._id}`} className="my-btn w-3/5 flex gap-4 items-center group transition px-4 text-black justify-center">
           <span>View Details</span>{" "}
           <FaArrowRight className="group-hover:-rotate-45 transition-all duration-300"></FaArrowRight>
         </Link>

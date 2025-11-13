@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import useTheme from "../../hooks/useTheme";
-import { RingLoader } from "react-spinners";
+import { PacmanLoader } from "react-spinners";
+import { ImCross } from "react-icons/im";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import MyJobCard from "./MyJobCard";
@@ -13,7 +14,8 @@ const MyAddedJobs = () => {
   const jobModalRef = useRef(null);
   const axiosSecure = useAxiosSecure();
   const [jobs, setJobs] = useState([]);
-  const [job, setJob] = useState([]);
+  const [job, setJob] = useState({});
+  const [refetch, setRefetch] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleModal = (job) => {
@@ -27,12 +29,44 @@ const MyAddedJobs = () => {
       setJobs(data.data);
       setLoading(false);
     });
-  }, [axiosSecure, user.email]);
+  }, [axiosSecure, user.email, refetch]);
 
-  const handleJobSubmit = (e) => {
+  const handleJobSubmit = async (e) => {
     e.preventDefault();
-    console.log(submit)
-  }
+    const photo = e.target.photo.value;
+    const title = e.target.title.value;
+    const category = e.target.category.value;
+    const summary = e.target.summary.value;
+    const vacancy = e.target.vacancy.value;
+    const salary = e.target.salary.value;
+
+    const updatedJob = {
+      title: title,
+      category: category,
+      summary: summary,
+      coverImage: photo,
+      salary: salary,
+      vacancy: vacancy,
+    };
+
+    const res = await axiosSecure.patch(`/jobs/${job._id}`, updatedJob);
+
+    if (res.data.modifiedCount > 0) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Job Information Updated Successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setRefetch(!refetch);
+      jobModalRef.current.close();
+    }
+
+    // axiosSecure.patch(`/jobs/${job._id}`, updatedJob).then((data) => {
+      
+    // });
+  };
 
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
@@ -80,17 +114,22 @@ const MyAddedJobs = () => {
         </motion.div>
 
         {/* loading true */}
-        {loading && (
+        {loading && theme === "light" && (
           <div className="flex justify-center items-center py-20">
-            <RingLoader size={50}></RingLoader>
+            <PacmanLoader size={50}></PacmanLoader>
+          </div>
+        )}
+        {loading && theme === "dark" && (
+          <div className="flex justify-center items-center py-20 bg-black">
+            <PacmanLoader color="#00FFFF" size={50}></PacmanLoader>
           </div>
         )}
 
-        {
-          jobs.length === 0 && !loading && <div className="flex justify-center items-center p-20 bg-gray-400">
+        {jobs.length === 0 && !loading && (
+          <div className="flex justify-center items-center p-20 bg-gray-400">
             <h1 className="text-2xl text-[#244034]">No Job Added Yet</h1>
           </div>
-        }
+        )}
 
         {jobs.length > 0 && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
@@ -114,7 +153,11 @@ const MyAddedJobs = () => {
                   ease: "easeOut",
                 }}
               >
-                <MyJobCard job={job} handleDelete={handleDelete} handleModal={handleModal}></MyJobCard>
+                <MyJobCard
+                  job={job}
+                  handleDelete={handleDelete}
+                  handleModal={handleModal}
+                ></MyJobCard>
               </motion.div>
             ))}
           </div>
@@ -122,113 +165,129 @@ const MyAddedJobs = () => {
 
         {/* Update modal */}
         <dialog
-            ref={jobModalRef}
-            className="modal modal-bottom sm:modal-middle"
-          >
-            <div className="modal-box bg-[#244034]">
-              <h3 className="font-bold text-lg text-white">Update Your Job</h3>
-              <p className="py-4 text-white">Edit job details quickly and accurately</p>
-              <form onSubmit={handleJobSubmit}>
-                <fieldset className="fieldset">
-                  <label className="label">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    className={`input focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-                    readOnly
-                    defaultValue={user?.displayName}
-                  />
-                  {/* email */}
-                  <label className="label">Email</label>
-                  <input
-                    type="email"
-                    className={`input focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-                    name="email"
-                    readOnly
-                    defaultValue={user?.email}
-                  />
-                   {/* Title */}
-            <label className="label">Title</label>
-            <input
-              type="text"
-              name="title"
-              className={`input focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-              defaultValue={job.title}
-            />
-            {/* category */}
-            <label className="label">Category</label>
-            <select
-              name="category"
-              defaultValue="Select a category"
-              className={`select focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-            >
-              <option disabled={true}>Select a Category</option>
-              <option value={"Web Development"}>Web Development</option>
-              <option value={"Digital Marketing"}>Digital Marketing</option>
-              <option value={"Graphics Designing"}>Graphics Designing</option>
-              <option value={"Technical Support"}>Technical Support</option>
-            </select>
-            {/* summary */}
-            <label className="label">Summary</label>
-            <textarea
-              name="summary"
-              className={`textarea w-full focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              }`}
-              placeholder="Give a summary"
-            ></textarea>
-            {/* cover image */}
-            <label className="label">Cover Image</label>
-            <input
-              type="url"
-              name="photo"
-              className={`input focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-              placeholder="Photo URL"
-            />
-            {/* salary */}
-            <label className="label">Salary</label>
-            <input
-              type="text"
-              name="salary"
-              className={`input focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-              placeholder="salary"
-            />
-            {/* vacancy */}
-            <label className="label">Vacancy</label>
-            <input
-              type="text"
-              name="vacancy"
-              className={`input focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
-              } w-full`}
-              placeholder="vacancy"
-            />
-                  <button className="btn btn-neutral mt-4">
-                    Place your bid
-                  </button>
-                </fieldset>
-              </form>
+          ref={jobModalRef}
+          className="modal modal-bottom sm:modal-middle"
+        >
+          <div className="modal-box bg-[#244034]">
+            <h3 className="font-bold text-xl text-[#D2F34C]">
+              Update Your Job
+            </h3>
+            <p className="py-4 text-white">
+              Edit job details quickly and accurately
+            </p>
+            <form onSubmit={handleJobSubmit}>
+              <fieldset className="fieldset">
+                <label className="label text-white/50">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className={`input focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                  readOnly
+                  defaultValue={user?.displayName}
+                />
+                {/* email */}
+                <label className="label text-white/50">Email</label>
+                <input
+                  type="email"
+                  className={`input focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                  name="email"
+                  readOnly
+                  defaultValue={user?.email}
+                />
+                {/* Title */}
+                <label className="label text-white/50">Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  className={`input focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                  defaultValue={job.title}
+                />
+                {/* category */}
+                <label className="label text-white/50">Category</label>
+                {/* {console.log(job.category === "Digital Marketing")} */}
+                <select
+                  name="category"
+                  value={job?.category || ""}
+                  onChange={(e) =>
+                    setJob((prev) => ({ ...prev, category: e.target.value }))
+                  }
+                  className={`select focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                >
+                  <option value="" disabled>
+                    Select a Category
+                  </option>
+                  <option value={"Web Development"}>Web Development</option>
+                  <option value={"Digital Marketing"}>Digital Marketing</option>
+                  <option value={"Graphics Designing"}>
+                    Graphics Designing
+                  </option>
+                  <option value={"Technical Support"}>Technical Support</option>
+                </select>
+                {/* summary */}
+                <label className="label text-white/50">Summary</label>
+                <textarea
+                  name="summary"
+                  className={`textarea w-full focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  }`}
+                  placeholder="Give a summary"
+                  defaultValue={job.summary}
+                ></textarea>
+                {/* cover image */}
+                <label className="label text-white/50">Cover Image</label>
+                <input
+                  type="url"
+                  name="photo"
+                  className={`input focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                  placeholder="Photo URL"
+                  defaultValue={job.coverImage}
+                />
+                {/* salary */}
+                <label className="label text-white/50">Salary</label>
+                <input
+                  type="text"
+                  name="salary"
+                  className={`input focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                  placeholder="salary"
+                  defaultValue={job.salary}
+                />
+                {/* vacancy */}
+                <label className="label text-white/50">Vacancy</label>
+                <input
+                  type="text"
+                  name="vacancy"
+                  className={`input focus:border-transparent ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } w-full`}
+                  placeholder="vacancy"
+                  defaultValue={job.vacancy}
+                />
+                <button className="my-btn text-black mt-4 text-base">
+                  Update Job
+                </button>
+              </fieldset>
+            </form>
 
-              <div className="modal-action">
-                <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
-                  <button className="btn">Cancel</button>
-                </form>
-              </div>
-            </div>
-          </dialog>
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                <ImCross />
+              </button>
+            </form>
+          </div>
+        </dialog>
       </div>
     </section>
   );
