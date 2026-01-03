@@ -157,7 +157,7 @@ const Login = () => {
         <p className="text-center">
           Do not have account? Please{" "}
           <Link
-            className="text-blue-500 hover:text-blue-900"
+            className="text-[#D2F34C] opacity-80 hover:opacity-100"
             to={"/register"}
             target="_parent"
           >

@@ -9,11 +9,11 @@ const JobCard = ({ job }) => {
   const formattedDate = format(dateInBD, 'dd-MM-yyyy');
   return (
     <div className="bg-[#f9f9f9] pb-6 shadow-sm hover:drop-shadow-md hover:-translate-y-0.5">
-      <figure className="p-2">
+      <figure className="p-2 h-[220px] w-full">
         <img
           src={job.coverImage}
-          className="rounded-lg"
-          alt="Shoes"
+          className="rounded-lg h-[220px] w-full"
+          alt={job.title}
         />
       </figure>
       <div className="mt-4 px-4">

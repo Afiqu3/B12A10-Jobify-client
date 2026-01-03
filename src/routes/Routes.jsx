@@ -10,6 +10,7 @@ import MyAddedJobs from "../components/MyAddedJobs/MyAddedJobs";
 import JobDetails from "../components/AllJobs/JobDetails";
 import MyAcceptedJobs from "../components/MyAcceptedJobs/MyAcceptedJobs";
 import Error from "../components/Error/Error";
+import AboutPage from "../components/About/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/allJobs",
         Component: AllJobs,
+      },
+      {
+        path: "/aboutPage",
+        Component: AboutPage,
       },
       {
         path: "/addJob",

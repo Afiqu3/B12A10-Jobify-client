@@ -293,7 +293,7 @@ const Register = () => {
         <p className="text-center">
           Already Have an account? Please{" "}
           <Link
-            className="text-blue-500 hover:text-blue-900"
+            className="text-[#D2F34C] opacity-80 hover:opacity-100"
             to={"/login"}
             target="_parent"
           >

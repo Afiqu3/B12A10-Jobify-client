@@ -86,8 +86,8 @@ const MyAddedJobs = () => {
           setJobs((prev) => prev.filter((job) => job._id !== id));
           Swal.fire("Deleted!", "Your job has been deleted.", "success");
         }
-      } catch (err) {
-        Swal.fire("Error", "Failed to delete the job.", "error");
+      } catch (error) {
+        Swal.fire("Error", "Failed to delete the job.", error);
       }
     }
   };

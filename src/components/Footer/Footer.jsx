@@ -1,60 +1,57 @@
-import React from "react";
+import React from 'react';
 import {
   FaFacebookF,
   FaGithub,
   FaLinkedin,
   FaMapMarkerAlt,
-} from "react-icons/fa";
-import { SiX } from "react-icons/si";
-import logoImg from "../../assets/logo.png";
-import { Link } from "react-router";
-import { motion } from "motion/react";
+} from 'react-icons/fa';
+import { SiX } from 'react-icons/si';
+import logoImg from '../../assets/logo.png';
+import { Link } from 'react-router';
+import { motion } from 'motion/react';
 
 const Footer = () => {
   const socialLinks = [
     {
       Icon: FaFacebookF,
-      label: "Facebook",
-      href: "https://www.facebook.com/afique.hossain.J/",
+      label: 'Facebook',
+      href: 'https://www.facebook.com/afique.hossain.J/',
     },
-    { Icon: FaGithub, label: "GitHub", href: "https://github.com/Afiqu3" },
+    { Icon: FaGithub, label: 'GitHub', href: 'https://github.com/Afiqu3' },
     {
       Icon: SiX,
-      label: "X",
-      href: "https://x.com/",
+      label: 'X',
+      href: 'https://x.com/',
     },
     {
       Icon: FaLinkedin,
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/md-afique-hossain",
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/md-afique-hossain',
     },
   ];
 
   const explore = [
-    ["All Jobs", "/allJobs"],
-    ["Add Job", "/addJob"],
-    ["My Added Jobs", "/myAddedJobs"],
-    ["Applied Jobs", "/myAcceptedJobs"],
+    ['All Jobs', '/allJobs'],
+    ['Add Job', '/addJob'],
+    ['My Added Jobs', '/myAddedJobs'],
+    ['Applied Jobs', '/myAcceptedJobs'],
   ];
 
   const company = [
-    ["Home", "/"],
-    ["About", "/about"],
-    ["Register", "/register"],
-    ["Login", "/login"],
+    ['Home', '/'],
+    ['About', '/about'],
+    ['Register', '/register'],
+    ['Login', '/login'],
   ];
 
-  const resources = [
-    ["Blog", "/blog"],
-    ["Community", "/community"],
-    ["Help Center", "/support"],
-    ["Privacy Policy", "/privacy"],
+  const contactInfo = [
+    { label: 'Email', value: 'support@jobify.com' },
+    { label: 'Phone', value: '+880 1701-234567' },
+    { label: 'Address', value: 'Dhaka, Bangladesh' },
   ];
 
   return (
-    <footer
-      className="relative bg-[#244034] text-gray-300 pt-15 border-t border-white/10 sm:[clip-path:polygon(0_0%,100%_25%,100%_100%,0_100%)] [clip-path:polygon(0_0%,100%_15%,100%_100%,0_100%)]"
-    >
+    <footer className="relative bg-[#244034] text-gray-300 pt-15 border-t border-white/10 sm:[clip-path:polygon(0_0%,100%_25%,100%_100%,0_100%)] [clip-path:polygon(0_0%,100%_15%,100%_100%,0_100%)]">
       <div className="relative max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Section */}
@@ -144,22 +141,20 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Resources Section */}
+          {/* Contact Section */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="text-white font-semibold mb-3">Resources</h4>
-            <ul className="space-y-2 text-sm">
-              {resources.map(([label, link]) => (
-                <li key={label}>
-                  <Link
-                    to={link}
-                    className="hover:text-[#D2F34C] transition cursor-pointer"
-                  >
-                    {label}
-                  </Link>
+            <h4 className="text-white font-semibold mb-3">Contact</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              {contactInfo.map(({ label, value }) => (
+                <li key={label} className="flex flex-col gap-y-1">
+                  <span className="text-gray-400 text-xs">{label}</span>
+                  <span className="hover:text-[#D2F34C] transition">
+                    {value}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -172,7 +167,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()}{" "}
+            © {new Date().getFullYear()}{' '}
             <span className="text-[#D2F34C] font-semibold">Jobify</span> — All
             rights reserved.
           </p>

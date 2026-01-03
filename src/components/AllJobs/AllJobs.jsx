@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import useTheme from "../../hooks/useTheme";
-import useAxios from "../../hooks/useAxios";
-import JobCard from "../LatestJobs/JobCard";
-import { PacmanLoader } from "react-spinners";
+import React, { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+import useTheme from '../../hooks/useTheme';
+import useAxios from '../../hooks/useAxios';
+import JobCard from '../LatestJobs/JobCard';
+import { PacmanLoader } from 'react-spinners';
 
 const AllJobs = () => {
   const { theme } = useTheme();
   const axiosInstance = useAxios();
   const [jobs, setJobs] = useState([]);
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const AllJobs = () => {
         >
           <h2
             className={`text-3xl md:text-4xl font-bold ${
-              theme === "dark" ? "" : "text-[#244034]"
+              theme === 'dark' ? '' : 'text-[#244034]'
             } mb-2`}
           >
             All Jobs
@@ -41,17 +41,19 @@ const AllJobs = () => {
           <div className="h-0.5 bg-[#D2F34C] w-30"></div>
         </motion.div>
 
-        <motion.div className="mb-15"
-        initial={{ opacity: 0, y: 40 }}
+        <motion.div
+          className="mb-15"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}>
+          transition={{ duration: 0.6 }}
+        >
           <form className="flex justify-center items-center gap-2">
             <select
               name="sortType"
               id=""
               onChange={(e) => setSortType(e.target.value)}
               className={`select focus:border-transparent ${
-                theme === "dark" ? "text-white" : "text-black"
+                theme === 'dark' ? 'text-white' : 'text-black'
               }`}
             >
               <option value="asc">Old to New</option>
@@ -61,37 +63,37 @@ const AllJobs = () => {
         </motion.div>
 
         {/* loading true */}
-        {loading && (
+        {loading ? (
           <div className="flex justify-center items-center">
             <PacmanLoader size={50}></PacmanLoader>
           </div>
+        ) : (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+            {jobs.map((job, index) => (
+              <motion.div
+                key={job._id}
+                initial={{
+                  opacity: 0,
+                  y: 30,
+                  scale: 0.9,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                viewport={{ amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: 'easeOut',
+                }}
+              >
+                <JobCard job={job}></JobCard>
+              </motion.div>
+            ))}
+          </div>
         )}
-
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-          {jobs.map((job, index) => (
-            <motion.div
-              key={job._id}
-              initial={{
-                opacity: 0,
-                y: 30,
-                scale: 0.9,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{ amount: 0.2 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
-            >
-              <JobCard job={job}></JobCard>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

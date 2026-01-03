@@ -24,6 +24,11 @@ const navigationData = [
     path: "/allJobs",
     id: 2,
   },
+  {
+    name: "About",
+    path: "/aboutPage",
+    id: 2,
+  },
   // {
   //   name: "Register",
   //   path: "/register",
@@ -40,17 +45,17 @@ const privateNavigationData = [
   {
     name: "Add a Job",
     path: "/addJob",
-    id: 3,
+    id: 4,
   },
   {
     name: "My Added Jobs",
     path: "/myAddedJobs",
-    id: 4,
+    id: 5,
   },
   {
     name: "My Accepted Jobs",
     path: "/myAcceptedJobs",
-    id: 5,
+    id: 6,
   },
 ];
 
