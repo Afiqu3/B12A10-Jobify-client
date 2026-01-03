@@ -1,31 +1,31 @@
-import React from "react";
-import { motion } from "motion/react";
-import { FaUserPlus } from "react-icons/fa6";
-import { RiProfileFill } from "react-icons/ri";
-import { FaPen } from "react-icons/fa";
-import StepCard from "./StepCard";
-import arrowImg from "../../assets/arrow.png";
-import useScreenSize from "../../hooks/useScreenSize";
+import React from 'react';
+import { motion } from 'motion/react';
+import { FaUserPlus } from 'react-icons/fa6';
+import { RiProfileFill } from 'react-icons/ri';
+import { FaPen } from 'react-icons/fa';
+import StepCard from './StepCard';
+import arrowImg from '../../assets/arrow.png';
+import useScreenSize from '../../hooks/useScreenSize';
 
 const steps = [
   {
     id: 1,
-    name: "Create Account",
+    name: 'Create Account',
     paragraph: "It's very easy to open an account and start your journey.",
     icon: <FaUserPlus />,
   },
   {
     id: 2,
-    name: "Complete your profile",
+    name: 'Complete your profile',
     paragraph:
-      "Complete your profile with all the info to get attention of client.",
+      'Complete your profile with all the info to get attention of client.',
     icon: <RiProfileFill />,
   },
   {
     id: 3,
-    name: "Complete your profile",
+    name: 'Complete your profile',
     paragraph:
-      "Apply & get your preferable jobs with all the requirements and get it.",
+      'Apply & get your preferable jobs with all the requirements and get it.',
     icon: <FaPen />,
   },
 ];
@@ -37,12 +37,16 @@ const HowItsWork = () => {
 
   return (
     <motion.section
-      className="bg-[#244034]"
+      className="bg-linear-to-br from-[#244034] to-[#1a2f26]"
       initial={{ opacity: 0, x: initialX }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 1 }}
     >
       <div className="py-30 relative">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D2F34C] rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-6xl mx-auto text-white">
           <motion.div
             className="flex flex-col justify-center items-center mb-15"

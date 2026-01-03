@@ -23,7 +23,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="relative bg-linear-to-br from-[#244034] to-[#1a2f26] py-20 overflow-hidden">
+    <section className="bg-linear-to-br from-[#244034] to-[#1a2f26] py-30">
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>

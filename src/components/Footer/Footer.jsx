@@ -51,7 +51,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#244034] text-gray-300 pt-15 border-t border-white/10 sm:[clip-path:polygon(0_0%,100%_25%,100%_100%,0_100%)] [clip-path:polygon(0_0%,100%_15%,100%_100%,0_100%)]">
+    <footer className="relative bg-linear-to-br from-[#244034] to-[#1a2f26] text-gray-300 pt-15 border-t border-white/10 sm:[clip-path:polygon(0_0%,100%_25%,100%_100%,0_100%)] [clip-path:polygon(0_0%,100%_15%,100%_100%,0_100%)]">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D2F34C] rounded-full blur-3xl"></div>
+      </div>
       <div className="relative max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Section */}

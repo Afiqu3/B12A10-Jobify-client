@@ -6,6 +6,7 @@ import LatestJobs from '../../components/LatestJobs/LatestJobs';
 import About from '../../components/About/About';
 import FAQ from '../../components/FAQ/FAQ';
 import Newsletter from '../../components/Newsletter/Newsletter';
+import Testimonials from '../../components/Testimonials/Testimonials ';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <About></About>
             <FAQ></FAQ>
             <Newsletter></Newsletter>
+            <Testimonials></Testimonials>
         </div>
     );
 };

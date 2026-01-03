@@ -125,9 +125,13 @@ const Navbar = () => {
         className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out ${
           scrolled
             ? 'bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 lg:rounded-full'
-            : 'bg-[#244034] translate-y-0 scale-100'
+            : 'bg-linear-to-br from-[#244034] to-[#1a2f26] translate-y-0 scale-100'
         }`}
       >
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D2F34C] rounded-full blur-3xl"></div>
+        </div>
         {/* <div className="absolute inset-0 bg-black/50"></div> */}
         <nav
           className={`flex justify-between items-center pt-7 max-w-6xl lg:mx-auto mx-4 md:py-5 ${

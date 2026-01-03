@@ -9,12 +9,16 @@ const About = () => {
   const initialX = isLarge ? 1100 : isMedium ? 200 : 0;
   return (
     <motion.section
-      className="bg-[#244034]"
+      className="bg-linear-to-br from-[#244034] to-[#1a2f26]"
       initial={{ opacity: 0, x: initialX }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 1 }}
     >
       <div className="py-30 relative">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D2F34C] rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-6xl mx-auto text-white">
           <motion.div
             className="flex flex-col justify-center items-center mb-15"
@@ -26,8 +30,8 @@ const About = () => {
             <div className="h-0.5 bg-[#D2F34C] w-30"></div>
           </motion.div>
 
-          <div className="flex lg:flex-row flex-col gap-4 lg:px-0 px-4">
-            <div className="relative flex-1">
+          <div className="flex lg:flex-row flex-col gap-4 px-6">
+            <div className="flex-1">
               <img src={banner2} alt="" />
               {/* <img className="absolute -top-15 -left-15 w-70 h-50" src={banner1} alt="" /> */}
               {/* <img className="absolute -bottom-15 -left-15 w-50 h-50" src={banner3} alt="" /> */}
