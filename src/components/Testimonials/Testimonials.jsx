@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaEnvelope, FaPaperPlane, FaQuoteLeft, FaStar } from 'react-icons/fa';
 import { motion } from 'motion/react';
 import useTheme from '../../hooks/useTheme';

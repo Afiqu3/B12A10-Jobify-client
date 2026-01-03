@@ -1,20 +1,20 @@
-import { createBrowserRouter } from "react-router";
-import RootLayout from "../layouts/RootLayout/RootLayout";
-import Home from "../pages/Home/Home";
-import Register from "../components/Register/Register";
-import Login from "../components/Login/LOgin";
-import PrivateRoutes from "./PrivateRoutes";
-import AddJob from "../components/AddJob/AddJob";
-import AllJobs from "../components/AllJobs/AllJobs";
-import MyAddedJobs from "../components/MyAddedJobs/MyAddedJobs";
-import JobDetails from "../components/AllJobs/JobDetails";
-import MyAcceptedJobs from "../components/MyAcceptedJobs/MyAcceptedJobs";
-import Error from "../components/Error/Error";
-import AboutPage from "../components/About/Page/AboutPage";
+import { createBrowserRouter } from 'react-router';
+import RootLayout from '../layouts/RootLayout/RootLayout';
+import Home from '../pages/Home/Home';
+import Register from '../components/Register/Register';
+import Login from '../components/Login/LOgin';
+import PrivateRoutes from './PrivateRoutes';
+import AddJob from '../components/AddJob/AddJob';
+import AllJobs from '../components/AllJobs/AllJobs';
+import MyAddedJobs from '../components/MyAddedJobs/MyAddedJobs';
+import JobDetails from '../components/AllJobs/JobDetails';
+import MyAcceptedJobs from '../components/MyAcceptedJobs/MyAcceptedJobs';
+import Error from '../components/Error/Error';
+import AboutPage from '../components/About/Page/AboutPage';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     Component: RootLayout,
     errorElement: <Error></Error>,
     children: [
@@ -23,23 +23,23 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/register",
+        path: '/register',
         Component: Register,
       },
       {
-        path: "/login",
+        path: '/login',
         Component: Login,
       },
       {
-        path: "/allJobs",
+        path: '/allJobs',
         Component: AllJobs,
       },
       {
-        path: "/aboutPage",
+        path: '/about',
         Component: AboutPage,
       },
       {
-        path: "/addJob",
+        path: '/addJob',
         element: (
           <PrivateRoutes>
             <AddJob></AddJob>
@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myAddedJobs",
+        path: '/myAddedJobs',
         element: (
           <PrivateRoutes>
             <MyAddedJobs></MyAddedJobs>
@@ -55,15 +55,11 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/allJobs/:id",
-        element: (
-          <PrivateRoutes>
-            <JobDetails></JobDetails>
-          </PrivateRoutes>
-        ),
+        path: '/allJobs/:id',
+        element: <JobDetails></JobDetails>,
       },
       {
-        path: "/myAcceptedJobs",
+        path: '/myAcceptedJobs',
         element: (
           <PrivateRoutes>
             <MyAcceptedJobs></MyAcceptedJobs>

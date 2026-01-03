@@ -138,7 +138,7 @@ const JobDetails = () => {
             </p>
           </div>
 
-          {user?.email !== job.userEmail && (
+          {user && user?.email !== job.userEmail && (
             <div className="mt-10 flex justify-center">
               <button
                 onClick={handleAccept}

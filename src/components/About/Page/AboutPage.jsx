@@ -1,10 +1,15 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import banner2 from '../../../assets/banner-2.jpg';
 
 const AboutPage = () => {
   return (
-    <section className="bg-[#244034]">
-      <div className="py-30 relative">
+    <section className="bg-linear-to-br from-[#244034] to-[#1a2f26]">
+      <div className="py-40 relative">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D2F34C] rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-6xl mx-auto text-white">
           <motion.div
             className="flex flex-col justify-center items-center mb-15"

@@ -26,7 +26,7 @@ const navigationData = [
   },
   {
     name: 'About',
-    path: '/aboutPage',
+    path: '/about',
     id: 3,
   },
   // {
@@ -128,10 +128,6 @@ const Navbar = () => {
             : 'bg-linear-to-br from-[#244034] to-[#1a2f26] translate-y-0 scale-100'
         }`}
       >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-[#D2F34C] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D2F34C] rounded-full blur-3xl"></div>
-        </div>
         {/* <div className="absolute inset-0 bg-black/50"></div> */}
         <nav
           className={`flex justify-between items-center pt-7 max-w-6xl lg:mx-auto mx-4 md:py-5 ${
@@ -184,15 +180,16 @@ const Navbar = () => {
               >
                 <div className="flex items-center gap-x-2">
                   <Link
-                    to={'/login'}
+                    to="/login"
                     target="_parent"
                     className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
                   >
                     <FaUser />
                     <span>Login</span>
                   </Link>
+
                   <Link
-                    to={'/register'}
+                    to="/register"
                     target="_parent"
                     className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
                   >
