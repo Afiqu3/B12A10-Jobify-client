@@ -1,33 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
-import Links from "./Links";
-import { IoIosMenu } from "react-icons/io";
-import { TbXboxXFilled } from "react-icons/tb";
-import { Link, NavLink, useNavigate } from "react-router";
-import "./links.css";
-import { FiLogIn, FiLogOut } from "react-icons/fi";
-import { FaUserPlus } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
-import { motion } from "motion/react";
-import logoImg from "../../assets/logo.png";
-import useTheme from "../../hooks/useTheme";
-import useAuth from "../../hooks/useAuth";
-import { Bounce, toast } from "react-toastify";
+import React, { useEffect, useState } from 'react';
+import Links from './Links';
+import { IoIosMenu } from 'react-icons/io';
+import { TbXboxXFilled } from 'react-icons/tb';
+import { Link } from 'react-router';
+import './links.css';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import { FaUserPlus } from 'react-icons/fa6';
+import { FaUser } from 'react-icons/fa';
+import { motion } from 'motion/react';
+import logoImg from '../../assets/logo.png';
+import useTheme from '../../hooks/useTheme';
+import useAuth from '../../hooks/useAuth';
+import { Bounce, toast } from 'react-toastify';
 
 const navigationData = [
   {
-    name: "Home",
-    path: "/",
+    name: 'Home',
+    path: '/',
     id: 1,
   },
   {
-    name: "All Jobs",
-    path: "/allJobs",
+    name: 'All Jobs',
+    path: '/allJobs',
     id: 2,
   },
   {
-    name: "About",
-    path: "/aboutPage",
-    id: 2,
+    name: 'About',
+    path: '/aboutPage',
+    id: 3,
   },
   // {
   //   name: "Register",
@@ -43,18 +43,18 @@ const navigationData = [
 
 const privateNavigationData = [
   {
-    name: "Add a Job",
-    path: "/addJob",
+    name: 'Add a Job',
+    path: '/addJob',
     id: 4,
   },
   {
-    name: "My Added Jobs",
-    path: "/myAddedJobs",
+    name: 'My Added Jobs',
+    path: '/myAddedJobs',
     id: 5,
   },
   {
-    name: "My Accepted Jobs",
-    path: "/myAcceptedJobs",
+    name: 'My Accepted Jobs',
+    path: '/myAcceptedJobs',
     id: 6,
   },
 ];
@@ -75,13 +75,13 @@ const Navbar = () => {
 
   // Theme
   useEffect(() => {
-    const html = document.querySelector("html");
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    const html = document.querySelector('html');
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const handleTheme = (checked) => {
-    setTheme(checked ? "dark" : "light");
+    setTheme(checked ? 'dark' : 'light');
   };
 
   // Scroll
@@ -94,23 +94,23 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // logout
   const handleLogOut = () => {
     signOutUser()
       .then(() => {
-        toast.success("Logout Successfully!", {
-          position: "top-center",
+        toast.success('Logout Successfully!', {
+          position: 'top-center',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "dark",
+          theme: 'dark',
           transition: Bounce,
         });
       })
@@ -124,21 +124,21 @@ const Navbar = () => {
       <div
         className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ease-in-out ${
           scrolled
-            ? "bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 lg:rounded-full"
-            : "bg-[#244034] translate-y-0 scale-100"
+            ? 'bg-[#244034]/95 shadow-lg backdrop-blur translate-y-2 lg:rounded-full'
+            : 'bg-[#244034] translate-y-0 scale-100'
         }`}
       >
         {/* <div className="absolute inset-0 bg-black/50"></div> */}
         <nav
           className={`flex justify-between items-center pt-7 max-w-6xl lg:mx-auto mx-4 md:py-5 ${
-            !isOpen ? "pb-7" : ""
+            !isOpen ? 'pb-7' : ''
           }`}
         >
           <motion.div
             className="flex items-center gap-x-3"
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: 'easeOut' }}
           >
             {isOpen ? (
               <TbXboxXFilled
@@ -155,7 +155,7 @@ const Navbar = () => {
               className="text-xl font-extrabold"
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 1, ease: 'easeOut' }}
             >
               <Link to={`/`} className="flex items-center gap-x-1 text-white">
                 <img className="w-12 h-12" src={logoImg} alt="" />
@@ -176,11 +176,11 @@ const Navbar = () => {
               <motion.div
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1, ease: 'easeOut' }}
               >
                 <div className="flex items-center gap-x-2">
                   <Link
-                    to={"/login"}
+                    to={'/login'}
                     target="_parent"
                     className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
                   >
@@ -188,7 +188,7 @@ const Navbar = () => {
                     <span>Login</span>
                   </Link>
                   <Link
-                    to={"/register"}
+                    to={'/register'}
                     target="_parent"
                     className="hidden group lg:flex items-center gap-2 my-btn rounded-full text-black"
                   >
@@ -204,7 +204,7 @@ const Navbar = () => {
                         type="checkbox"
                         className="theme-controller"
                         defaultChecked={
-                          localStorage.getItem("theme") === "dark"
+                          localStorage.getItem('theme') === 'dark'
                         }
                       />
 
@@ -238,14 +238,18 @@ const Navbar = () => {
                   className="dropdown dropdown-hover dropdown-center"
                   initial={{ opacity: 0, y: -15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
+                  transition={{ duration: 1, ease: 'easeOut' }}
                 >
                   <div
                     tabIndex={0}
                     role="button"
                     className="cursor-pointer m-1"
                   >
-                    <img src={user.photoURL} className="rounded-full w-12" alt="" />
+                    <img
+                      src={user.photoURL}
+                      className="rounded-full w-12"
+                      alt=""
+                    />
                   </div>
                   <ul
                     tabIndex="-1"
@@ -263,7 +267,7 @@ const Navbar = () => {
                             type="checkbox"
                             className="theme-controller"
                             defaultChecked={
-                              localStorage.getItem("theme") === "dark"
+                              localStorage.getItem('theme') === 'dark'
                             }
                           />
 
@@ -306,7 +310,7 @@ const Navbar = () => {
                   onChange={(e) => handleTheme(e.target.checked)}
                   type="checkbox"
                   className="theme-controller"
-                  defaultChecked={localStorage.getItem("theme") === "dark"}
+                  defaultChecked={localStorage.getItem('theme') === 'dark'}
                 />
 
                 {/* sun icon */}
@@ -329,7 +333,7 @@ const Navbar = () => {
               </label>
             </div>
           )}
-          
+
           {/* small or medium screen and user is true */}
           {user && (
             <div className="lg:hidden block">
@@ -337,7 +341,7 @@ const Navbar = () => {
                 className="dropdown dropdown-bottom dropdown-end"
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1, ease: 'easeOut' }}
               >
                 <div tabIndex={0} role="button" className="cursor-pointer m-1">
                   <img src={user.photoURL} alt="" />
@@ -358,7 +362,7 @@ const Navbar = () => {
                           type="checkbox"
                           className="theme-controller"
                           defaultChecked={
-                            localStorage.getItem("theme") === "dark"
+                            localStorage.getItem('theme') === 'dark'
                           }
                         />
 
@@ -435,11 +439,11 @@ const Navbar = () => {
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 1, ease: 'easeOut' }}
             >
               <div className="space-y-3">
                 <Link
-                  to={"/login"}
+                  to={'/login'}
                   target="_parent"
                   className="lg:hidden animation flex items-center justify-center gap-2 my-btn rounded-full text-black"
                 >
@@ -447,7 +451,7 @@ const Navbar = () => {
                   <span>Login</span>
                 </Link>
                 <Link
-                  to={"/register"}
+                  to={'/register'}
                   target="_parent"
                   className="lg:hidden animation flex items-center gap-2 justify-center my-btn rounded-full text-black"
                 >

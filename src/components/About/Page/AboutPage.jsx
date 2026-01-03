@@ -1,19 +1,9 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import useScreenSize from '../../hooks/useScreenSize';
-import banner2 from '../../assets/banner-2.jpg';
+import banner2 from '../../../assets/banner-2.jpg';
 
-const About = () => {
-  const { isMedium, isLarge } = useScreenSize();
-
-  const initialX = isLarge ? 1100 : isMedium ? 200 : 0;
+const AboutPage = () => {
   return (
-    <motion.section
-      className="bg-[#244034]"
-      initial={{ opacity: 0, x: initialX }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <section className="bg-[#244034]">
       <div className="py-30 relative">
         <div className="max-w-6xl mx-auto text-white">
           <motion.div
@@ -29,8 +19,6 @@ const About = () => {
           <div className="flex lg:flex-row flex-col gap-4 lg:px-0 px-4">
             <div className="relative flex-1">
               <img src={banner2} alt="" />
-              {/* <img className="absolute -top-15 -left-15 w-70 h-50" src={banner1} alt="" /> */}
-              {/* <img className="absolute -bottom-15 -left-15 w-50 h-50" src={banner3} alt="" /> */}
             </div>
 
             <div className="flex-1 flex flex-col justify-center items-center gap-4 lg:text-left text-center">
@@ -53,8 +41,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
-export default About;
+export default AboutPage;

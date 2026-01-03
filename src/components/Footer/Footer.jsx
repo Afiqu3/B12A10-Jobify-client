@@ -39,7 +39,7 @@ const Footer = () => {
 
   const company = [
     ['Home', '/'],
-    ['About', '/about'],
+    ['About', '/aboutPage'],
     ['Register', '/register'],
     ['Login', '/login'],
   ];

@@ -10,7 +10,7 @@ import MyAddedJobs from "../components/MyAddedJobs/MyAddedJobs";
 import JobDetails from "../components/AllJobs/JobDetails";
 import MyAcceptedJobs from "../components/MyAcceptedJobs/MyAcceptedJobs";
 import Error from "../components/Error/Error";
-import AboutPage from "../components/About/AboutPage";
+import AboutPage from "../components/About/Page/AboutPage";
 
 export const router = createBrowserRouter([
   {
