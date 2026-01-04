@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUser, FaUserShield } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { FiLogIn } from "react-icons/fi";
@@ -10,20 +10,29 @@ import useTheme from "../../hooks/useTheme";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { theme } = useTheme();
   const { signInUser, setLoading, signInWithGoogle, error, setError } =
     useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Demo credentials
+  const demoCredentials = {
+    user: {
+      email: "admin@admin.com",
+      password: "1234Aa",
+    },
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    // console.log(email, password)
-    signInUser(email, password)
+    const formEmail = e.target.email.value;
+    const formPassword = e.target.password.value;
+    
+    signInUser(formEmail, formPassword)
       .then(() => {
-        // console.log(result.user);
         toast.success("Login Successfully!", {
           position: "top-center",
           autoClose: 5000,
@@ -43,6 +52,7 @@ const Login = () => {
         setError("Invalid Email or Password");
       });
   };
+
   const handleGoogleLogIn = () => {
     signInWithGoogle()
       .then(() => {
@@ -69,11 +79,23 @@ const Login = () => {
     setShowPassword((prev) => !prev);
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/");
-  //   }
-  // }, [user, navigate]);
+  const handleDemoLogin = (type) => {
+    const credentials = demoCredentials[type];
+    setEmail(credentials.email);
+    setPassword(credentials.password);
+    
+    // toast.info(`${type === 'user' ? 'Demo User' : 'Admin'} credentials filled!`, {
+    //   position: "top-center",
+    //   autoClose: 2000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "dark",
+    //   transition: Bounce,
+    // });
+  };
 
   return (
     <motion.div
@@ -95,13 +117,33 @@ const Login = () => {
           </p>
         </div>
 
+        {/* Demo Credentials Section */}
+        <div className="bg-white/5 border border-white/10 rounded-lg p-4 mb-4">
+          <p className="text-sm text-gray-300 mb-3 text-center">
+            Try demo accounts:
+          </p>
+          <div className="flex items-center justify-center">
+            <button
+              onClick={() => handleDemoLogin('user')}
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-[#D2F34C]/20 hover:bg-[#D2F34C]/30 border border-[#D2F34C]/40 text-[#D2F34C] rounded-lg transition-all duration-300 text-sm font-medium"
+            >
+              <FaUser size={14} />
+              Demo User
+            </button>
+          </div>
+        </div>
+
         <form onSubmit={handleLogin}>
           <fieldset className="fieldset space-y-3">
             {/* email */}
             <input
               type="email"
               name="email"
-              className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={`input focus:border-transparent ${
+                theme === "dark" ? "text-white" : "text-black"
+              } w-full`}
               placeholder="Email"
               required
             />
@@ -110,7 +152,11 @@ const Login = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
-                className={`input focus:border-transparent ${theme === 'dark' ? 'text-white' : 'text-black'} w-full`}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={`input focus:border-transparent ${
+                  theme === "dark" ? "text-white" : "text-black"
+                } w-full`}
                 placeholder="Password"
                 required
               />
@@ -125,20 +171,19 @@ const Login = () => {
                 )}
               </span>
             </div>
-            <div
-            // onClick={handlePasswordReset}
-            >
-              <button className="link link-hover">Forgot password?</button>
+            <div>
+              <button type="button" className="link link-hover">
+                Forgot password?
+              </button>
             </div>
             <button className="my-btn text-black flex justify-center items-center gap-2 text-base">
-              {" "}
               <FiLogIn />
               Login
             </button>
           </fieldset>
         </form>
 
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500 text-center text-sm">{error}</p>}
 
         <div className="flex justify-between items-center text-white gap-2">
           <div className="border w-1/2 border-gray-400"></div>
@@ -149,7 +194,6 @@ const Login = () => {
           onClick={handleGoogleLogIn}
           className="btn btn-neutral bg-gray-800/50 hover:bg-gray-800 border text-white font-medium transition-all duration-300"
         >
-          {" "}
           <FcGoogle size={24} />
           Login With Google
         </button>

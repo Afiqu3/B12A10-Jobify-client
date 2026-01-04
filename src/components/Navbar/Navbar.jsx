@@ -29,6 +29,11 @@ const navigationData = [
     path: '/about',
     id: 3,
   },
+  {
+    name: 'Contract',
+    path: '/contract',
+    id: 4,
+  },
   // {
   //   name: "Register",
   //   path: "/register",

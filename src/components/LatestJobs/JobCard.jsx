@@ -25,7 +25,7 @@ const JobCard = ({ job }) => {
               <p>{job.postedBy}</p>
               <p>{formattedDate}</p>
             </div>
-            <p>Salary: <span className="font-semibold">{job.salary}</span></p>
+            <p>Salary: <span className="font-semibold">BDT {job.salary}</span></p>
         </div>
 
             <Link to={`/allJobs/${job._id}`} className="my-btn w-3/5 flex gap-4 items-center group transition px-4 text-black justify-center"><span>View Details</span> <FaArrowRight className="group-hover:-rotate-45 transition-all duration-300"></FaArrowRight></Link>
