@@ -116,12 +116,12 @@ const MyAddedJobs = () => {
         {/* loading true */}
         {loading && theme === "light" && (
           <div className="flex justify-center items-center py-20">
-            <PacmanLoader size={50}></PacmanLoader>
+            <PacmanLoader size={50} color="#D2F34C"></PacmanLoader>
           </div>
         )}
         {loading && theme === "dark" && (
           <div className="flex justify-center items-center py-20 bg-black">
-            <PacmanLoader color="#00FFFF" size={50}></PacmanLoader>
+            <PacmanLoader color="#D2F34C" size={50}></PacmanLoader>
           </div>
         )}
 

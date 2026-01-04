@@ -469,7 +469,7 @@ const Navbar = () => {
           </div>
         )}
         {isOpen && user && (
-          <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-55">
+          <div className="lg:hidden mt-2 mb-5 ml-10 space-y-3 max-w-45 relative h-60">
             <ul className={`space-y-3 animation`}>
               {links} {privateLinks}
             </ul>
